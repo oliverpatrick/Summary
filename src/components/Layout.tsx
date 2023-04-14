@@ -10,7 +10,7 @@ interface ILayoutProps {
 function Layout({ children }: ILayoutProps) {
   return (
     <div className="layout">
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="content">{children}</div>
     </div>
   );

@@ -4,9 +4,7 @@ import { useInterval } from "../../hooks/useInterval";
 
 import "./Titlebar.scss";
 
-type Props = {};
-
-function Titlebar({}: Props) {
+function Titlebar() {
   const [maximized, setMaximized] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
   const [windowTitle, setWindowTitle] = useState("Summary");
