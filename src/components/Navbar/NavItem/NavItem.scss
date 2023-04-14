@@ -1,0 +1,174 @@
+@import "../../../styles/colours.scss";
+
+// .navbar-item {
+//   background-color: transparent;
+//   border: none;
+//   cursor: pointer;
+//   flex-shrink: 0;
+//   height: 50px;
+//   padding: 0px;
+//   position: relative;
+//   width: 70px;
+
+//   &:hover,
+//   &:focus,
+//   &.active {
+//     &:after {
+//       opacity: 1;
+//       transform: translateY(-50%);
+//     }
+
+//     .navbar-item-content {
+//       background-color: $blurple;
+//       border-radius: 15px;
+//     }
+//   }
+
+//   &:hover {
+//     .tooltip {
+//       opacity: 1;
+//     }
+//   }
+
+//   &.active {
+//     &:after {
+//       height: 40px;
+//     }
+//   }
+
+//   &:after {
+//     background-color: gray(230);
+//     border-bottom-right-radius: 3px;
+//     border-top-right-radius: 3px;
+//     content: "";
+//     height: 12px;
+//     left: 0px;
+//     opacity: 0;
+//     position: absolute;
+//     top: 50%;
+//     transform: translateY(-50%);
+//     transition: height 300ms, opacity 300ms;
+//     width: 4px;
+//   }
+
+//   &.default {
+//     &:hover,
+//     &:focus,
+//     &.active {
+//       .navbar-item-content {
+//         background-color: $green;
+
+//         i {
+//           color: gray(230);
+//         }
+//       }
+//     }
+
+//     .navbar-item-content {
+//       i {
+//         color: $green;
+//       }
+//     }
+//   }
+
+//   .navbar-item-content {
+//     align-items: center;
+//     background-color: $d1;
+//     border-radius: 50px;
+//     display: flex;
+//     justify-content: center;
+//     margin: 0px 10px;
+//     height: 50px;
+//     transition: background-color 300ms, border-radius 300ms;
+//     width: 50px;
+
+//     i {
+//       color: gray(230);
+//       font-size: 1.75em;
+//       height: 30px;
+//       line-height: 30px;
+//       text-align: center;
+//       transition: color 300ms;
+//     }
+
+//     .navbar-item-image {
+//       background-position: center;
+//       background-size: cover;
+//       border-radius: inherit;
+//       height: inherit;
+//       width: inherit;
+//     }
+//   }
+// }
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
+
+// Define variables for reusable colors
+$color-white: #fff;
+$color-black: #000;
+$color-gray-900: #1f2937;
+
+// Define mixin for creating a tooltip
+@mixin tooltip {
+  position: absolute;
+  top: 50%;
+  left: -70px;
+  transform: translateY(-50%);
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: $color-white;
+  background-color: $color-gray-900;
+  border-radius: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 4rem;
+  display: flex;
+  flex-direction: column;
+  background-color: $color-white;
+  box-shadow: 0 2px 4px rgba($color-black, 0.1);
+
+  // Style the divider line
+  hr {
+    margin: 8px 0;
+    border: 0;
+    border-top: 1px solid rgba($color-black, 0.1);
+  }
+
+  // Style the icon container
+  .sidebar-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+    width: 4rem;
+
+    // Add the tooltip on hover
+    &:hover .sidebar-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-100%) scale(1);
+    }
+
+    // Add the active and hover styles
+    &:active,
+    &:hover {
+      border-left: 2px solid $color-gray-900;
+      border-radius: 50%;
+    }
+
+    // Style the tooltip
+    .sidebar-tooltip {
+      @include tooltip;
+    }
+  }
+}

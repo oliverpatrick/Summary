@@ -1,0 +1,55 @@
+@import "../../styles/colours.scss";
+
+.titlebar {
+  height: 1.5rem;
+  background: $d3;
+  user-select: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.window-title {
+  font-weight: 600;
+  font-size: small;
+  padding: 0.5rem;
+  color: darkgray;
+}
+
+.titlebar-window-buttons-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.titlebar-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+
+  svg {
+    padding: 0.3rem;
+  }
+
+  &-close-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+
+    svg {
+      padding: 0.3rem;
+    }
+
+    &:hover {
+      background: $red;
+    }
+  }
+
+  &:hover {
+    background: #363636;
+  }
+}
