@@ -13,12 +13,17 @@ const AudioRecorder: React.FC<AudioRecorderProps> = () => {
   const stream = useRef<MediaStream | null>(null);
 
   useEffect(() => {
-    navigator.mediaDevices.enumerateDevices().then((devices) => {
-      setAudioDevices(devices);
-      if (devices.length > 0) {
+    const getUserDevices = async () => {
+      await navigator.mediaDevices.getUserMedia({audio: true});   
+      await navigator.mediaDevices.enumerateDevices().then(devices => {
+        if(devices.length <= 0) return;
+        
+        setAudioDevices(devices);
         setSelectedDeviceId(devices[0].deviceId);
-      }
-    });
+      });   
+    };
+
+    getUserDevices();
   }, []);
 
   const startRecording = () => {
