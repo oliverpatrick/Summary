@@ -11,7 +11,7 @@ function Titlebar() {
 
   const tauriInterval = useInterval(() => {
     appWindow.isMaximized().then(setMaximized);
-    appWindow.setTitle(windowTitle);
+    // appWindow.setTitle(windowTitle);
     appWindow.isFullscreen().then(setFullscreen);
   }, 200);
 

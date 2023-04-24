@@ -1,3 +1,7 @@
+@function gray($color) {
+  @return rgb($color, $color, $color);
+}
+
 $accent-cinnabar: #e94f37;
 $accent-steel-blue: #3f88c5;
 $accent-forest-green: #548c2f;

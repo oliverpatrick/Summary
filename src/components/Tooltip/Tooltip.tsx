@@ -1,21 +1,43 @@
+import { useState } from "react";
 import classNames from "classnames";
-
-enum TooltipDirection {
-  Right = "Right",
-  Top = "Top",
-}
+import "./Tooltip.scss";
 
 interface ITooltipProps {
-  direction?: TooltipDirection;
-  text: string;
+  direction?: "bottom" | "left" | "top" | "right";
+  label: string;
+  children?: React.ReactNode;
 }
 
-const Tooltip: React.FC<ITooltipProps> = (props: ITooltipProps) => {
-  const direction: TooltipDirection = props.direction || TooltipDirection.Right;
+const Tooltip: React.FC<ITooltipProps> = ({
+  direction,
+  label,
+  children,
+}: ITooltipProps) => {
+  const [active, setActive] = useState(false);
+  const tooltipDirection: string = direction || "right";
+
+  const showTip = () => {
+    setActive(true);
+  };
+
+  const hideTip = () => {
+    setActive(false);
+  };
 
   return (
-    <div className={classNames("tooltip", direction.toLowerCase())}>
-      <p>{props.text}</p>
+    <div
+      className="tooltip-wrapper"
+      onMouseEnter={showTip}
+      onMouseLeave={hideTip}
+    >
+      {children}
+      {active && (
+        <div
+          className={classNames("tooltip-tip", tooltipDirection.toLowerCase())}
+        >
+          <p className="tooltip-text">{label}</p>
+        </div>
+      )}
     </div>
   );
 };
