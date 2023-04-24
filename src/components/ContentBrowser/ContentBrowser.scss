@@ -1,0 +1,23 @@
+@import "../../styles/colours.scss";
+
+#content-navigator {
+  background-color: $d2;
+  border-top-left-radius: 15px;
+  height: 100vh;
+  width: 16rem;
+
+  #content-navigator-search-bar-toggle {
+    background-color: $d3;
+    border: none;
+    border-radius: 4px;
+    color: gray(150);
+    cursor: pointer;
+    font-size: 0.8em;
+    font-weight: 500;
+    margin: 10px;
+    outline: none;
+    padding: 6px;
+    text-align: left;
+    width: calc(100% - 2rem);
+  }
+}

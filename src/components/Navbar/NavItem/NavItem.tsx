@@ -2,6 +2,7 @@ import classNames from "classnames";
 import "./NavItem.scss";
 import { ReactNode } from "react";
 import Tooltip from "../../Tooltip/Tooltip";
+import { Link } from "react-router-dom";
 
 interface INavbarItemProps {
   color?: string;
@@ -18,7 +19,6 @@ const NavbarItem: React.FC<INavbarItemProps> = ({
 }: INavbarItemProps) => {
   const handleOnClick = (): void => {
     console.log("clicked");
-    // selectContentID(props.contentID);
   };
 
   const getContent = (): JSX.Element | ReactNode | undefined => {
@@ -51,9 +51,11 @@ const NavbarItem: React.FC<INavbarItemProps> = ({
 
   return (
     <Tooltip label={label} direction="right">
-      <button type="button" className="navbar-item" onClick={handleOnClick}>
-        <div className="navbar-item-content">{getContent()}</div>
-      </button>
+      <Link to="/summariser">
+        <button type="button" className="navbar-item" onClick={handleOnClick}>
+          <div className="navbar-item-content">{getContent()}</div>
+        </button>
+      </Link>
     </Tooltip>
   );
 };

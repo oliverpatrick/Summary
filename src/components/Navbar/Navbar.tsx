@@ -5,6 +5,33 @@ import "./Navbar.scss";
 import NavbarItem from "./NavItem/NavItem";
 
 const Navbar: React.FC = () => {
+  const getCustomItems = (): JSX.Element[] => {
+    const items = [
+      {
+        contentID: 1,
+        image:
+          "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGl6emF8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+        label: "Pizza Lovers",
+      },
+      {
+        contentID: 2,
+        image:
+          "https://images.unsplash.com/photo-1586182987320-4f376d39d787?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Z2FtaW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        label: "The Game Players",
+      },
+      {
+        contentID: 3,
+        image:
+          "https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8YW5pbWFsc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+        label: "Panda Peeps",
+      },
+    ];
+
+    return items.map((item) => (
+      <NavbarItem key={item.contentID} image={item.image} label={item.label} />
+    ));
+  };
+
   return (
     <div id="sidenav-wrapper">
       <div id="sidenav">
@@ -27,6 +54,37 @@ const Navbar: React.FC = () => {
           />
         </div>
         <div className="sidenav-section">
+          <NavbarItem
+            icon={
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            }
+            label="Summariser"
+          />
+          <NavbarItem
+            icon={
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-6 h-6"
+              >
+                <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z" />
+              </svg>
+            }
+            label="Notes"
+          />
+          {getCustomItems()}
           <NavbarItem
             icon={
               <svg

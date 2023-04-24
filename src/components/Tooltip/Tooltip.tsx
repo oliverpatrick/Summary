@@ -13,7 +13,7 @@ const Tooltip: React.FC<ITooltipProps> = ({
   label,
   children,
 }: ITooltipProps) => {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(true);
   const tooltipDirection: string = direction || "right";
 
   const showTip = () => {
