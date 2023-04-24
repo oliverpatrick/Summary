@@ -14,13 +14,19 @@ const AudioRecorder: React.FC<AudioRecorderProps> = () => {
 
   useEffect(() => {
     const getUserDevices = async () => {
+      // Check if its supported on the device.
+      if(!navigator.mediaDevices) return;
+
+      // Get permission & user devices.
       await navigator.mediaDevices.getUserMedia({audio: true});   
-      await navigator.mediaDevices.enumerateDevices().then(devices => {
-        if(devices.length <= 0) return;
-        
-        setAudioDevices(devices);
-        setSelectedDeviceId(devices[0].deviceId);
-      });   
+      const devices = await navigator.mediaDevices.enumerateDevices();
+
+      // TODO: Tidy this up, devices.length == 2 even when 0 devices are found
+      // this is the reason for the || => I think that works better?
+      if(devices.length <= 0 || devices[0].deviceId.length === 0) return;
+      
+      setAudioDevices(devices);
+      setSelectedDeviceId(devices[0].deviceId);  
     };
 
     getUserDevices();
